@@ -1,0 +1,25 @@
+题目：289 生命游戏
+
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        import numpy as np
+        r,c = len(board), len(board[0])
+        #0的填充
+        board1 = np.array([[0 for a in range(c+2)] for b in range(r+2)])
+        board1[1:r+1,1:c+1] = np.array(board)
+        #卷积核
+        kernel = np.array([[1,1,1],[1,0,1],[1,1,1]])
+        #开始卷积
+        for i in range(1,r+1):
+            for j in range(1,c+1):
+                tsum = np.sum(kernel * board1[i-1:i+2,j-1:j+2])
+                if board1[i][j] == 1:
+                    if tsum < 2 or tsum > 3:
+                        board[i-1][j-1] = 0
+                else:
+                    if tsum == 3:
+                        board[i-1][j-1] = 1
+        return board
