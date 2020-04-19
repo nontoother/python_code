@@ -1,0 +1,13 @@
+动态规划
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n<=3:
+            return n
+        f1 = 1
+        f2 = 2
+        last = 0
+        for i in range(3,n+1):
+            last = f1 + f2
+            f1 = f2
+            f2 = last
+        return last
