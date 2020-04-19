@@ -1,0 +1,15 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        def ConDigit(string):
+            # n = len(string)
+            # sumbit = 0
+            # for i in range(n):
+            #     k = eval(string[i]) * 2**(n-i-1)
+            #     sumbit = sumbit + k
+            # return sumbit
+            a = '0b'
+            return int(a+string,2)
+        ad = ConDigit(a)
+        bd = ConDigit(b)
+        sumstr = bin(ad+bd)
+        return sumstr[2:]
