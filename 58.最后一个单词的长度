@@ -1,0 +1,11 @@
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        if not s:
+            return 0
+        arr = str.split(s)
+        n = len(arr)
+        if n == 0:
+            return 0
+        else:
+            a = arr[n-1]
+            return len(a)
